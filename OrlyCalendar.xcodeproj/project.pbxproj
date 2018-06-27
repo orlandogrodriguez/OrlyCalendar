@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C46739A20E4298700B1E604 /* OrlyCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C46739920E4298700B1E604 /* OrlyCalendar.swift */; };
 		0CE2277320DCB7B900B8FF44 /* CalendarCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2277220DCB7B900B8FF44 /* CalendarCollectionViewFlowLayout.swift */; };
 		8122A3C020CEE677003D5BD9 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8122A3BF20CEE677003D5BD9 /* CalendarCell.xib */; };
 		8122A3C220CEE72F003D5BD9 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8122A3C120CEE72F003D5BD9 /* CalendarCell.swift */; };
@@ -21,10 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C46739920E4298700B1E604 /* OrlyCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrlyCalendar.swift; sourceTree = "<group>"; };
 		0CE2277220DCB7B900B8FF44 /* CalendarCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		8122A3BF20CEE677003D5BD9 /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
 		8122A3C120CEE72F003D5BD9 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
-		81D64FE320CAFD64005D3857 /* CollectionPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81D64FE320CAFD64005D3857 /* OrlyCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrlyCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D64FE620CAFD64005D3857 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81D64FE820CAFD64005D3857 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		81D64FEB20CAFD64005D3857 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,7 +52,7 @@
 		81D64FDA20CAFD63005D3857 = {
 			isa = PBXGroup;
 			children = (
-				81D64FE520CAFD64005D3857 /* CollectionPractice */,
+				81D64FE520CAFD64005D3857 /* OrlyCalendar */,
 				81D64FE420CAFD64005D3857 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,12 +60,12 @@
 		81D64FE420CAFD64005D3857 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				81D64FE320CAFD64005D3857 /* CollectionPractice.app */,
+				81D64FE320CAFD64005D3857 /* OrlyCalendar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		81D64FE520CAFD64005D3857 /* CollectionPractice */ = {
+		81D64FE520CAFD64005D3857 /* OrlyCalendar */ = {
 			isa = PBXGroup;
 			children = (
 				81D64FE620CAFD64005D3857 /* AppDelegate.swift */,
@@ -78,16 +80,17 @@
 				81D64FFF20CB0115005D3857 /* CVCell.swift */,
 				8122A3C120CEE72F003D5BD9 /* CalendarCell.swift */,
 				0CE2277220DCB7B900B8FF44 /* CalendarCollectionViewFlowLayout.swift */,
+				0C46739920E4298700B1E604 /* OrlyCalendar.swift */,
 			);
-			path = CollectionPractice;
+			path = OrlyCalendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		81D64FE220CAFD64005D3857 /* CollectionPractice */ = {
+		81D64FE220CAFD64005D3857 /* OrlyCalendar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 81D64FF820CAFD66005D3857 /* Build configuration list for PBXNativeTarget "CollectionPractice" */;
+			buildConfigurationList = 81D64FF820CAFD66005D3857 /* Build configuration list for PBXNativeTarget "OrlyCalendar" */;
 			buildPhases = (
 				81D64FDF20CAFD64005D3857 /* Sources */,
 				81D64FE020CAFD64005D3857 /* Frameworks */,
@@ -97,9 +100,9 @@
 			);
 			dependencies = (
 			);
-			name = CollectionPractice;
+			name = OrlyCalendar;
 			productName = CollectionPractice;
-			productReference = 81D64FE320CAFD64005D3857 /* CollectionPractice.app */;
+			productReference = 81D64FE320CAFD64005D3857 /* OrlyCalendar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -117,7 +120,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 81D64FDE20CAFD63005D3857 /* Build configuration list for PBXProject "CollectionPractice" */;
+			buildConfigurationList = 81D64FDE20CAFD63005D3857 /* Build configuration list for PBXProject "OrlyCalendar" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -130,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				81D64FE220CAFD64005D3857 /* CollectionPractice */,
+				81D64FE220CAFD64005D3857 /* OrlyCalendar */,
 			);
 		};
 /* End PBXProject section */
@@ -159,6 +162,7 @@
 				81D64FE920CAFD64005D3857 /* ViewController.swift in Sources */,
 				81D64FE720CAFD64005D3857 /* AppDelegate.swift in Sources */,
 				81D64FEF20CAFD64005D3857 /* CollectionPractice.xcdatamodeld in Sources */,
+				0C46739A20E4298700B1E604 /* OrlyCalendar.swift in Sources */,
 				0CE2277320DCB7B900B8FF44 /* CalendarCollectionViewFlowLayout.swift in Sources */,
 				8122A3C220CEE72F003D5BD9 /* CalendarCell.swift in Sources */,
 			);
@@ -306,7 +310,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L8DCU292HF;
-				INFOPLIST_FILE = CollectionPractice/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/OrlyCalendar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,7 +328,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L8DCU292HF;
-				INFOPLIST_FILE = CollectionPractice/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/OrlyCalendar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -339,7 +343,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		81D64FDE20CAFD63005D3857 /* Build configuration list for PBXProject "CollectionPractice" */ = {
+		81D64FDE20CAFD63005D3857 /* Build configuration list for PBXProject "OrlyCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81D64FF620CAFD66005D3857 /* Debug */,
@@ -348,7 +352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		81D64FF820CAFD66005D3857 /* Build configuration list for PBXNativeTarget "CollectionPractice" */ = {
+		81D64FF820CAFD66005D3857 /* Build configuration list for PBXNativeTarget "OrlyCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81D64FF920CAFD66005D3857 /* Debug */,

@@ -38,7 +38,7 @@ class CalendarCollectionViewFlowLayout: UICollectionViewFlowLayout {
         
         // Calculate the number of rows and columns
         columns = 7
-        rows = 42 * 12
+        rows = 6 * 12
         
         // Take the remaining gap and divide it among the existing columns
         let innerWidth = (CGFloat(columns) * (minCellSize.width + cellSpacing)) + cellSpacing
@@ -71,6 +71,16 @@ class CalendarCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override var collectionViewContentSize: CGSize {
         let contentWidth = (cellSize.width + cellSpacing) * CGFloat(columns) + cellSpacing
         let contentHeight = (cellSize.height + cellSpacing) * CGFloat(rows) + cellSpacing
+        OperationQueue.main.addOperation {
+            let curCVFrame = self.collectionView!.frame
+            let curX = curCVFrame.minX
+            let curY = curCVFrame.minY
+            let correctedWidth = contentWidth
+            let correctedHeight = (self.cellSize.height + self.cellSpacing) * CGFloat(6)
+            self.collectionView!.frame = CGRect(x: curX, y: curY, width: correctedWidth, height: correctedHeight)
+            let aspectRatioConstraint = NSLayoutConstraint(item: self.collectionView!, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: self.collectionView!, attribute: NSLayoutAttribute.height, multiplier: correctedWidth / correctedHeight, constant: 0)
+            self.collectionView!.addConstraint(aspectRatioConstraint)
+        }
         let contentSize = CGSize(width: contentWidth, height: contentHeight)
         return contentSize
     }
