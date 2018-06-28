@@ -22,17 +22,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPd-0Y-A1x">
                         <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehN-Bb-R0D">
-                                <rect key="frame" x="8" y="8" width="72" height="38.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ehN-Bb-R0D">
+                                <rect key="frame" x="31" y="8" width="26" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇧🇪🇧🇪🇧🇪" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSi-2L-6Mz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇧🇪🇧🇪🇧🇪" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CSi-2L-6Mz">
                                 <rect key="frame" x="8" y="58" width="72" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="22" id="Fx2-z2-hwj"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,12 +38,10 @@
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ehN-Bb-R0D" firstAttribute="top" secondItem="pPd-0Y-A1x" secondAttribute="top" constant="8" id="1kV-zA-RVc"/>
-                            <constraint firstItem="CSi-2L-6Mz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ehN-Bb-R0D" secondAttribute="bottom" constant="8" id="9ni-am-kIK"/>
-                            <constraint firstAttribute="trailing" secondItem="ehN-Bb-R0D" secondAttribute="trailing" constant="8" id="VbY-4P-cIL"/>
-                            <constraint firstItem="ehN-Bb-R0D" firstAttribute="leading" secondItem="pPd-0Y-A1x" secondAttribute="leading" constant="8" id="Zkj-dY-YRt"/>
-                            <constraint firstItem="CSi-2L-6Mz" firstAttribute="leading" secondItem="pPd-0Y-A1x" secondAttribute="leading" constant="8" id="aye-iM-qcl"/>
+                            <constraint firstItem="ehN-Bb-R0D" firstAttribute="centerX" secondItem="pPd-0Y-A1x" secondAttribute="centerX" id="3D9-JQ-mnu"/>
+                            <constraint firstItem="CSi-2L-6Mz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ehN-Bb-R0D" secondAttribute="bottom" constant="4" id="9ni-am-kIK"/>
+                            <constraint firstItem="CSi-2L-6Mz" firstAttribute="centerX" secondItem="pPd-0Y-A1x" secondAttribute="centerX" id="P70-cY-i8u"/>
                             <constraint firstItem="CSi-2L-6Mz" firstAttribute="centerX" secondItem="pPd-0Y-A1x" secondAttribute="centerX" id="flQ-ec-KID"/>
-                            <constraint firstAttribute="trailing" secondItem="CSi-2L-6Mz" secondAttribute="trailing" constant="8" id="nKs-q0-WMN"/>
                             <constraint firstAttribute="bottom" secondItem="CSi-2L-6Mz" secondAttribute="bottom" constant="8" id="oEZ-r7-C2u"/>
                             <constraint firstItem="ehN-Bb-R0D" firstAttribute="centerX" secondItem="pPd-0Y-A1x" secondAttribute="centerX" id="thH-MH-2z4"/>
                         </constraints>
@@ -56,6 +51,7 @@
             <constraints>
                 <constraint firstItem="pPd-0Y-A1x" firstAttribute="leading" secondItem="G8c-Ne-5Wz" secondAttribute="leading" id="3YN-4n-ie9"/>
                 <constraint firstItem="pPd-0Y-A1x" firstAttribute="top" secondItem="G8c-Ne-5Wz" secondAttribute="top" id="59e-Z4-eKH"/>
+                <constraint firstAttribute="trailing" secondItem="pPd-0Y-A1x" secondAttribute="trailing" id="Mwr-ys-R1T"/>
                 <constraint firstAttribute="bottom" secondItem="pPd-0Y-A1x" secondAttribute="bottom" id="QtO-WK-Gwh"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="tvF-NW-J2d"/>

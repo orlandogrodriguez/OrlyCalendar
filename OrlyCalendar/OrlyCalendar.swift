@@ -79,15 +79,37 @@ class OrlyCalendar: NSObject {
         for i in 0 ..< 12 {
             var curDay = Day(day: "1")
             for j in 0 ..< 42 {
-                //print("\(Calendar.current.component(.weekday, from: date))")
-                if j < Calendar.current.component(.weekday, from: date) || Int(curDay.value)! > daysInMonth[i] {
+                
+                var monthStartingIndex = 0 // Keeps track of the current month's
+                                           // Starting index in the collection view
+                
+                // Check whether we are at an index where there's a valid number
+                // if we're before a day in the month
+                if j < Calendar.current.component(.weekday, from: date)
+                {
                     curDay.value = "-"
+                    monthStartingIndex += 1
                     tempMonthArray.append(curDay)
-                } else {
-                    tempMonthArray.append(curDay)
+                }
+                
+                // If we're in the first day of the month
+                else if j == Calendar.current.component(.weekday, from: date) {
+                    curDay.value = "1"
+                }
+                    
+                // If we're after a day in the month
+                else if (j > daysInMonth[i] + monthStartingIndex)
+                {
+                    curDay.value = "-"
+                }
+                
+                // if we're in a day in the month
+                else
+                {
                     date = addOneDay(date: date)
                     curDay.value = String(Int(curDay.value)! + 1)
                 }
+                tempMonthArray.append(curDay)
             }
             calendarGridArray.append(tempMonthArray)
             tempMonthArray = []
@@ -132,32 +154,19 @@ class OrlyCalendar: NSObject {
     
     private func monthAsInt(month: String) -> Int {
         switch month {
-        case "January":
-            return 0
-        case "February":
-            return 1
-        case "March":
-            return 2
-        case "April":
-            return 3
-        case "May":
-            return 4
-        case "June":
-            return 5
-        case "July":
-            return 6
-        case "August":
-            return 7
-        case "September":
-            return 8
-        case "October":
-            return 9
-        case "November":
-            return 10
-        case "December":
-            return 11
-        default:
-            return -1
+        case "January":     return 0
+        case "February":    return 1
+        case "March":       return 2
+        case "April":       return 3
+        case "May":         return 4
+        case "June":        return 5
+        case "July":        return 6
+        case "August":      return 7
+        case "September":   return 8
+        case "October":     return 9
+        case "November":    return 10
+        case "December":    return 11
+        default:            return -1
         }
     }
 }

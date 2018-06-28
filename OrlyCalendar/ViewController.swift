@@ -25,27 +25,15 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var totalCount: Int = 0
-        for i in 0 ..< 12 {
-            totalCount += calendar.getMonthArray(month: OrlyCalendar.Month(rawValue: i)!).count
-        }
-        return totalCount
+        return 42
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = oCalendarCollection.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
-        let month = OrlyCalendar.Month(rawValue: indexPath.item)!
-        let monthArray = calendar.getMonthArray(month: month)
-        
+        let monthArray = calendar.getMonthArray(month: calendar.currentMonth)
         cell.setDay(value: monthArray[indexPath.item])
-        
         return cell
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    
     }
 }
 
