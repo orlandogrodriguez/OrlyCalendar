@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarCollectionViewFlowLayout: UICollectionViewFlowLayout {
+class OrlyCalendarCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     // MARK: - External Configuration
     @IBInspectable var minCellSize: CGSize = CGSize(width: 44, height: 44) {

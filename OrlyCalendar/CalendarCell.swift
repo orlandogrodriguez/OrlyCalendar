@@ -11,14 +11,26 @@ import UIKit
 
 class CalendarCell: UICollectionViewCell {
     
-    @IBOutlet weak var oDayLabel: UILabel!
-//    @IBOutlet weak var oCountriesVisitedLabel: UILabel!
+    var day: Day!
     
-    func setDay(day: String) {
-        oDayLabel.text = day
+    @IBOutlet weak var oDayLabel: UILabel!
+    @IBOutlet weak var oDetailLabel: UILabel!
+    
+    func setDay(value: Day) {
+        day = value
+        updateViewFromModel()
     }
     
-//    func setCountries(countries: String) {
-//        oCountriesVisitedLabel.text = countries
-//    }
+    private func updateViewFromModel() {
+        guard let day = day else { return }
+        oDayLabel.text = day.value
+        for det in day.detail {
+            oDetailLabel.text?.append(contentsOf: det)
+        }
+        if day.isSelected {
+            self.layer.backgroundColor = UIColor.cyan.cgColor
+        } else {
+            self.layer.backgroundColor = UIColor.clear.cgColor
+        }
+    }
 }

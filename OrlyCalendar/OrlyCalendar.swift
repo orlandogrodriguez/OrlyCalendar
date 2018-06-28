@@ -12,17 +12,8 @@ import UIKit
 class OrlyCalendar: NSObject {
     
     private(set) var currentYear: Int!
-    private var calendarArray: [[String]]!
-    
-    init(year: Int) {
-        super.init()
-        self.setUpCalendarProperties(forYear: year)
-    }
-    
-    // MARK: - Public Methdos
-    func getMonthArray(month: Month) -> [String] {
-        return calendarArray[month.month()]
-    }
+    private var calendarArray: [[Day]]!
+    var currentMonth: Month!                // The month the user is currently looking at
     
     enum Month: Int {
         case January
@@ -57,29 +48,45 @@ class OrlyCalendar: NSObject {
         }
     }
     
-    // MARK: - Private Methods
+    init(year: Int) {
+        super.init()
+        self.setUpCalendarProperties(forYear: year)
+    }
     
+    // MARK: - Public Methdos
+    func getMonthArray(month: Month) -> [Day] {
+        return calendarArray[month.month()]
+    }
+    
+    // MARK: - Private Methods
     private func setUpCalendarProperties(forYear year: Int) {
         currentYear = year
         calendarArray = populateMonthArrays(forYear: year)
+        currentMonth = {
+            let now = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "LLLL"
+            return OrlyCalendar.Month(rawValue: monthAsInt(month: dateFormatter.string(from: now)))
+        }()
     }
     
-    private func populateMonthArrays(forYear year: Int) -> [[String]] {
-        var calendarGridArray = [[String]]()
+    private func populateMonthArrays(forYear year: Int) -> [[Day]] {
+        var calendarGridArray = [[Day]]()
         var date = createNewYearsDayFor(year: year)
         let daysInFeb = isLeapYear(year: year) ? 29 : 28
         let daysInMonth = [31, daysInFeb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-        var tempMonthArray = [String]()
+        var tempMonthArray = [Day]()
         for i in 0 ..< 12 {
-            var curDay = 1
+            var curDay = Day(day: "1")
             for j in 0 ..< 42 {
-                print("\(Calendar.current.component(.weekday, from: date))")
-                if j < Calendar.current.component(.weekday, from: date) || curDay > daysInMonth[i] {
-                    tempMonthArray.append("-")
+                //print("\(Calendar.current.component(.weekday, from: date))")
+                if j < Calendar.current.component(.weekday, from: date) || Int(curDay.value)! > daysInMonth[i] {
+                    curDay.value = "-"
+                    tempMonthArray.append(curDay)
                 } else {
-                    tempMonthArray.append(String(curDay))
+                    tempMonthArray.append(curDay)
                     date = addOneDay(date: date)
-                    curDay += 1
+                    curDay.value = String(Int(curDay.value)! + 1)
                 }
             }
             calendarGridArray.append(tempMonthArray)
@@ -123,18 +130,48 @@ class OrlyCalendar: NSObject {
         return Date(timeInterval: 60 * 60 * 24, since: date)
     }
     
+    private func monthAsInt(month: String) -> Int {
+        switch month {
+        case "January":
+            return 0
+        case "February":
+            return 1
+        case "March":
+            return 2
+        case "April":
+            return 3
+        case "May":
+            return 4
+        case "June":
+            return 5
+        case "July":
+            return 6
+        case "August":
+            return 7
+        case "September":
+            return 8
+        case "October":
+            return 9
+        case "November":
+            return 10
+        case "December":
+            return 11
+        default:
+            return -1
+        }
+    }
 }
 
-class Day: NSObject {
-    private let value: String       // Displays the number value of the day, (i.e. from 1 to 31 or '-')
-    var detail: [String]    // Displays the countries visited during the day
-    var isSelected: Bool    // becomes highlighted when selected
-    var isCurrent: Bool     // becomes true if it is currently that day
+struct Day {
+    var value: String               // Displays the number value of the day, (i.e. from 1 to 31 or '-')
+    var detail: [String]            // Displays the countries visited during the day
+    var isSelected: Bool            // becomes highlighted when selected
+    var isCurrent: Bool             // becomes true if it is currently that day
     
     init(day: String) {
-        value = day
-        detail = []
-        isSelected = false
-        isCurrent = false
+        self.value = day
+        self.detail = []
+        self.isSelected = false
+        self.isCurrent = false
     }
 }
