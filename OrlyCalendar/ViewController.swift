@@ -10,24 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let countriesVisited = ["🇨🇺", "🇧🇪", "🇵🇹", "🇳🇱", "🇪🇨"]
-    
-    var calendarGridArray = [[String]]()
+    let calendar = OrlyCalendar(year: 2018)
 
-    @IBOutlet weak var oCountryCollection: UICollectionView!
     @IBOutlet weak var oCalendarCollection: UICollectionView!
     @IBOutlet weak var oMonthLabel: UILabel!
-    @IBOutlet weak var oCalendarCollectionAspectRatio: NSLayoutConstraint!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        oCountryCollection.register(UINib(nibName: "CVCell", bundle: nil), forCellWithReuseIdentifier: "CVCell")
         
         oCalendarCollection.register(UINib(nibName: "CalendarCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCell")
-        
-        oCountryCollection.dataSource = self
-        oCountryCollection.delegate = self
         oCalendarCollection.dataSource = self
         oCalendarCollection.delegate = self
         
@@ -36,6 +27,8 @@ class ViewController: UIViewController {
     }
     
     func populateMonthArrays(year: Int) {
+        var calendarGridArray = [[String]]()
+
         var date = createNewYearsDayFor(year: year)
         let daysInFeb = isLeapYear(year: year) ? 29 : 28
         let daysInMonth = [31, daysInFeb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -99,41 +92,17 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if collectionView == self.oCountryCollection {
-            return countriesVisited.count
+        var totalCount: Int = 0
+        for var i in 0 ..< calendarGridArray.count {
+            totalCount += calendarGridArray[i].count
         }
-        
-        if collectionView == self.oCalendarCollection {
-            print("Calendar grid array count: \(calendarGridArray.count)")
-            var totalCount: Int = 0
-            for var i in 0 ..< calendarGridArray.count {
-                totalCount += calendarGridArray[i].count
-            }
-            
-            return totalCount
-        }
-    
-        print("something whent wrong")
-        return 0
+        return totalCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if collectionView == self.oCountryCollection {
-            let cell = oCountryCollection.dequeueReusableCell(withReuseIdentifier: "CVCell", for: indexPath) as! CVCell
-            cell.setFlag(flag: countriesVisited[indexPath.item])
-            return cell
-        }
-        
-        if collectionView == self.oCalendarCollection {
-            let cell = oCalendarCollection.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
-            cell.setDay(day: String(calendarGridArray[indexPath.item / 42][indexPath.item % 42]))
-            //cell.setCountries(countries: "-")
-            return cell
-        }
-        
-        return UICollectionViewCell()
+        let cell = oCalendarCollection.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
+        cell.setDay(day: String(calendarGridArray[indexPath.item / 42][indexPath.item % 42]))
+        return cell
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

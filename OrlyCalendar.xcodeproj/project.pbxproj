@@ -17,7 +17,6 @@
 		81D64FEF20CAFD64005D3857 /* CollectionPractice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81D64FED20CAFD64005D3857 /* CollectionPractice.xcdatamodeld */; };
 		81D64FF120CAFD66005D3857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81D64FF020CAFD66005D3857 /* Assets.xcassets */; };
 		81D64FF420CAFD66005D3857 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D64FF220CAFD66005D3857 /* LaunchScreen.storyboard */; };
-		81D64FFE20CB00FF005D3857 /* CVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81D64FFD20CB00FF005D3857 /* CVCell.xib */; };
 		81D6500020CB0115005D3857 /* CVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D64FFF20CB0115005D3857 /* CVCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,6 @@
 		81D64FF020CAFD66005D3857 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81D64FF320CAFD66005D3857 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81D64FF520CAFD66005D3857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		81D64FFD20CB00FF005D3857 /* CVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CVCell.xib; sourceTree = "<group>"; };
 		81D64FFF20CB0115005D3857 /* CVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,7 +73,6 @@
 				81D64FF220CAFD66005D3857 /* LaunchScreen.storyboard */,
 				81D64FF520CAFD66005D3857 /* Info.plist */,
 				81D64FED20CAFD64005D3857 /* CollectionPractice.xcdatamodeld */,
-				81D64FFD20CB00FF005D3857 /* CVCell.xib */,
 				8122A3BF20CEE677003D5BD9 /* CalendarCell.xib */,
 				81D64FFF20CB0115005D3857 /* CVCell.swift */,
 				8122A3C120CEE72F003D5BD9 /* CalendarCell.swift */,
@@ -143,7 +140,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81D64FFE20CB00FF005D3857 /* CVCell.xib in Resources */,
 				81D64FF420CAFD66005D3857 /* LaunchScreen.storyboard in Resources */,
 				81D64FF120CAFD66005D3857 /* Assets.xcassets in Resources */,
 				81D64FEC20CAFD64005D3857 /* Main.storyboard in Resources */,
