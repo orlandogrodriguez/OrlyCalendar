@@ -22,15 +22,19 @@ class CalendarCell: UICollectionViewCell {
     }
     
     private func updateViewFromModel() {
-        guard let day = day else { return }
-        oDayLabel.text = day.value
-        for det in day.detail {
-            oDetailLabel.text?.append(contentsOf: det)
-        }
-        if day.isSelected {
-            self.layer.backgroundColor = UIColor.cyan.cgColor
-        } else {
-            self.layer.backgroundColor = UIColor.clear.cgColor
+        DispatchQueue.main.async {
+            guard let day = self.day else { return }
+            let date = day.date
+            self.oDayLabel.text = String(Calendar.current.component(.day, from: Date(timeInterval: 60 * 60 * 24, since: date)))
+            for det in day.detail {
+                self.oDetailLabel.text?.append(contentsOf: det)
+            }
+            if day.isSelected {
+                self.layer.backgroundColor = UIColor.cyan.cgColor
+            } else {
+                self.layer.backgroundColor = UIColor.clear.cgColor
+            }
+            self.oDayLabel.layer.opacity = day.isInCurrentMonth ? 1.0 : 0.25
         }
     }
 }

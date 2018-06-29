@@ -10,7 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let calendar = OrlyCalendar(year: 2018)
+    // let calendar = OrlyCalendar(year: 2018)
+    let calendar = ORCalendar(year: 2018)
 
     @IBOutlet weak var oCalendarCollection: UICollectionView!
     @IBOutlet weak var oMonthLabel: UILabel!
@@ -31,7 +32,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = oCalendarCollection.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
-        let monthArray = calendar.getMonthArray(month: calendar.currentMonth)
+        var monthArray = calendar.getDaysArrayForMonth(month: calendar.monthInView)
         cell.setDay(value: monthArray[indexPath.item])
         return cell
     }

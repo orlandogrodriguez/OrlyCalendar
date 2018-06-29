@@ -38,7 +38,7 @@ class OrlyCalendarCollectionViewFlowLayout: UICollectionViewFlowLayout {
         
         // Calculate the number of rows and columns
         columns = 7
-        rows = 6 * 12
+        rows = 6
         
         // Take the remaining gap and divide it among the existing columns
         let innerWidth = (CGFloat(columns) * (minCellSize.width + cellSpacing)) + cellSpacing
