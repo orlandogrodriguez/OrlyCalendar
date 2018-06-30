@@ -40,6 +40,32 @@ class ORCalendar: NSObject {
         return daysArrayForMonth
     }
     
+    func getMonthInViewAsString() -> String {
+        switch monthInView {
+        case 0: return "January"
+        case 1: return "February"
+        case 2: return "March"
+        case 3: return "April"
+        case 4: return "May"
+        case 5: return "June"
+        case 6: return "July"
+        case 7: return "August"
+        case 8: return "September"
+        case 9: return "October"
+        case 10: return "November"
+        case 11: return "December"
+        default: return "Month"
+        }
+    }
+    
+    func goToPreviousMonth() {
+        if monthInView > 0 { monthInView = (monthInView - 1) % 12 }
+    }
+    
+    func goToNextMonth() {
+        if monthInView < 12 { monthInView = (monthInView + 1) % 12 }
+    }
+    
     // Mark: - Private Methods
     private func setUpCalendarProperties(forYear year: Int) {
         self.currentYear = year
@@ -55,12 +81,17 @@ class ORCalendar: NSObject {
         monthToStartingWeek = [:]
         var currentMonth = 0
         var currentWeek = 0
-        for _ in 1 ..< 371 {
+        for i in 1 ..< 378 {
             let newDay = Day(date: datePointer)
             daysArray.append(newDay)
-            currentWeek = daysArray.count / 7
-            if Calendar.current.component(.day, from: datePointer) == 1 {
+            currentWeek = i / 7
+            if Calendar.current.component(.day, from: Date(timeInterval: 60 * 60 * 24, since: datePointer)) == 1 && monthToStartingWeek.count < 12 {
                 monthToStartingWeek[currentMonth] = currentWeek
+                if daysArray.count < currentWeek * 7 {
+                    if Int(daysArray[currentWeek * 7].value)! > 7 {
+                        monthToStartingWeek[currentMonth] = currentWeek - 1
+                    }
+                }
                 currentMonth += 1
             }
             datePointer = Date(timeInterval: 60 * 60 * 24, since: datePointer)

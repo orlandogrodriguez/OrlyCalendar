@@ -22,7 +22,34 @@ class ViewController: UIViewController {
         oCalendarCollection.register(UINib(nibName: "CalendarCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCell")
         oCalendarCollection.dataSource = self
         oCalendarCollection.delegate = self
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeLeft))
+        swipeLeft.direction = .left
+        view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeRight))
+        swipeRight.direction = .right
+        view.addGestureRecognizer(swipeRight)
     }
+    
+    @objc func swipeLeft() {
+        self.calendar.goToNextMonth()
+        print("Swiped left.")
+        updateViewFromModel()
+    }
+    
+    @objc func swipeRight() {
+        self.calendar.goToPreviousMonth()
+        print("Swiped right")
+        updateViewFromModel()
+    }
+    
+    func updateViewFromModel() {
+        self.oCalendarCollection.reloadData()
+        self.oMonthLabel.text = calendar.getMonthInViewAsString()
+    }
+    
+    
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
