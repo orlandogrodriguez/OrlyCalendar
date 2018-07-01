@@ -87,10 +87,8 @@ class ORCalendar: NSObject {
             currentWeek = i / 7
             if Calendar.current.component(.day, from: Date(timeInterval: 60 * 60 * 24, since: datePointer)) == 1 && monthToStartingWeek.count < 12 {
                 monthToStartingWeek[currentMonth] = currentWeek
-                if daysArray.count < currentWeek * 7 {
-                    if Int(daysArray[currentWeek * 7].value)! > 7 {
-                        monthToStartingWeek[currentMonth] = currentWeek - 1
-                    }
+                if Calendar.current.component(.weekday, from: Date(timeInterval: 60 * 60 * 24, since: datePointer)) == 7 {
+                    monthToStartingWeek[currentMonth] = currentWeek - 1
                 }
                 currentMonth += 1
             }
