@@ -58,12 +58,14 @@ class ORCalendar: NSObject {
         }
     }
     
+    // Go to previous month and wrap around to december if in january
     func goToPreviousMonth() {
-        if monthInView > 0 { monthInView = (monthInView - 1) % 12 }
+        monthInView = monthInView == 0 ? 11 : monthInView - 1
     }
     
+    // Go to next month and wrap around to january if in december.
     func goToNextMonth() {
-        if monthInView < 12 { monthInView = (monthInView + 1) % 12 }
+        monthInView = monthInView == 11 ? 0 : monthInView + 1
     }
     
     // Mark: - Private Methods

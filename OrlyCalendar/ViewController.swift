@@ -23,6 +23,11 @@ class ViewController: UIViewController {
         oCalendarCollection.dataSource = self
         oCalendarCollection.delegate = self
         
+        addGestureRecognizers()
+        
+    }
+    
+    private func addGestureRecognizers() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeLeft))
         swipeLeft.direction = .left
         view.addGestureRecognizer(swipeLeft)
@@ -45,8 +50,17 @@ class ViewController: UIViewController {
     }
     
     func updateViewFromModel() {
-        self.oCalendarCollection.reloadData()
-        self.oMonthLabel.text = calendar.getMonthInViewAsString()
+        UIView.animate(withDuration: 0.1, animations: {
+            self.oCalendarCollection.layer.opacity = 0.0
+            self.oMonthLabel.layer.opacity = 0.0
+        }) { (finished) in
+            self.oCalendarCollection.reloadData()
+            self.oMonthLabel.text = self.calendar.getMonthInViewAsString()
+            UIView.animate(withDuration: 0.1, animations: {
+                self.oCalendarCollection.layer.opacity = 1.0
+                self.oMonthLabel.layer.opacity = 1.0
+            })
+        }
     }
     
     
@@ -63,6 +77,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.setDay(value: monthArray[indexPath.item])
         return cell
     }
+    
 }
 
 
