@@ -84,7 +84,8 @@ class ORCalendar: NSObject {
         var currentMonth = 0
         var currentWeek = 0
         for i in 1 ..< 378 {
-            let newDay = Day(date: datePointer)
+            var newDay = Day(date: datePointer)
+            if dateIsToday(date: datePointer) { newDay.isCurrent = true }
             daysArray.append(newDay)
             currentWeek = i / 7
             if Calendar.current.component(.day, from: Date(timeInterval: 60 * 60 * 24, since: datePointer)) == 1 && monthToStartingWeek.count < 12 {
@@ -127,5 +128,16 @@ class ORCalendar: NSObject {
         } else {
             return false
         }
+    }
+    
+    private func dateIsToday(date: Date) -> Bool {
+        let today = Date()
+        let todayDay = Calendar.current.component(.day, from: today)
+        let todayMonth = Calendar.current.component(.month, from: today)
+        let todayYear = Calendar.current.component(.year, from: today)
+        let dateDay = Calendar.current.component(.day, from: date)
+        let dateMonth = Calendar.current.component(.month, from: date)
+        let dateYear = Calendar.current.component(.year, from: date)
+        return todayDay == dateDay && todayMonth == dateMonth && todayYear == dateYear
     }
 }

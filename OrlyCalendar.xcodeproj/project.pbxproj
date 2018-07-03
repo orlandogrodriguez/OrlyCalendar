@@ -66,11 +66,11 @@
 		81D64FE520CAFD64005D3857 /* OrlyCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				E67E9B5020E6E06600571336 /* Model */,
+				81D64FF020CAFD66005D3857 /* Assets.xcassets */,
 				81D64FE620CAFD64005D3857 /* AppDelegate.swift */,
+				E67E9B5020E6E06600571336 /* Model */,
 				81D64FE820CAFD64005D3857 /* ViewController.swift */,
 				81D64FEA20CAFD64005D3857 /* Main.storyboard */,
-				81D64FF020CAFD66005D3857 /* Assets.xcassets */,
 				81D64FF220CAFD66005D3857 /* LaunchScreen.storyboard */,
 				81D64FF520CAFD66005D3857 /* Info.plist */,
 				81D64FED20CAFD64005D3857 /* CollectionPractice.xcdatamodeld */,

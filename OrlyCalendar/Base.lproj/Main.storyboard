@@ -65,8 +65,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ByF-AW-vV1">
-                                <rect key="frame" x="16" y="108.5" width="343" height="294.5"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ByF-AW-vV1">
+                                <rect key="frame" x="16" y="116.5" width="343" height="294.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="294.5" id="5mR-Al-mzb"/>
@@ -99,7 +99,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ByF-AW-vV1" firstAttribute="top" secondItem="4nh-xN-JIB" secondAttribute="bottom" constant="8" id="100-X9-Cwz"/>
+                            <constraint firstItem="ByF-AW-vV1" firstAttribute="top" secondItem="4nh-xN-JIB" secondAttribute="bottom" constant="16" id="100-X9-Cwz"/>
                             <constraint firstItem="4nh-xN-JIB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="5o8-iv-6Bi"/>
                             <constraint firstItem="ByF-AW-vV1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="8Xx-ex-Jqk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ByF-AW-vV1" secondAttribute="trailing" constant="16" id="Dpx-Vw-rNZ"/>
@@ -114,6 +114,7 @@
                     <connections>
                         <outlet property="oCalendarCollection" destination="ByF-AW-vV1" id="gXB-4V-0IV"/>
                         <outlet property="oMonthLabel" destination="O0F-QH-zHM" id="tuB-x9-rpn"/>
+                        <outlet property="oWeekdayStackView" destination="4nh-xN-JIB" id="Kus-HL-0S4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

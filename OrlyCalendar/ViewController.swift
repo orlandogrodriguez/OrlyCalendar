@@ -10,11 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    // let calendar = OrlyCalendar(year: 2018)
     let calendar = ORCalendar(year: 2018)
 
     @IBOutlet weak var oCalendarCollection: UICollectionView!
     @IBOutlet weak var oMonthLabel: UILabel!
+    @IBOutlet weak var oWeekdayStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,10 @@ class ViewController: UIViewController {
         oCalendarCollection.delegate = self
         
         addGestureRecognizers()
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        initializeUI()
     }
     
     private func addGestureRecognizers() {
@@ -50,17 +53,34 @@ class ViewController: UIViewController {
     }
     
     func updateViewFromModel() {
+        let swipeL = view.gestureRecognizers![view.gestureRecognizers!.count - 2]
+        let swipeR = view.gestureRecognizers![view.gestureRecognizers!.count - 1]
+        let cframe = oCalendarCollection.frame
         UIView.animate(withDuration: 0.1, animations: {
+            self.oCalendarCollection.frame = CGRect(x: cframe.minX + 8, y: cframe.minY, width: cframe.width, height: cframe.height)
             self.oCalendarCollection.layer.opacity = 0.0
             self.oMonthLabel.layer.opacity = 0.0
         }) { (finished) in
+            self.oCalendarCollection.frame = CGRect(x: cframe.minX - 8, y: cframe.minY, width: cframe.width, height: cframe.height)
             self.oCalendarCollection.reloadData()
             self.oMonthLabel.text = self.calendar.getMonthInViewAsString()
             UIView.animate(withDuration: 0.1, animations: {
+                self.oCalendarCollection.frame = cframe
                 self.oCalendarCollection.layer.opacity = 1.0
                 self.oMonthLabel.layer.opacity = 1.0
             })
         }
+    }
+    
+    private func initializeUI() {
+        // Set up stack view's bottom border.
+        let stackViewBottomBorder = CALayer()
+        let stackViewBottomBorderWidth = CGFloat(1.0)
+        stackViewBottomBorder.borderColor = UIColor.gray.cgColor
+        stackViewBottomBorder.frame = CGRect(x: 0, y: oCalendarCollection.frame.minY, width: self.view.frame.size.width, height: stackViewBottomBorderWidth)
+        stackViewBottomBorder.borderWidth = stackViewBottomBorderWidth
+        self.view.layer.addSublayer(stackViewBottomBorder)
+        self.view.layer.masksToBounds = true
     }
     
     

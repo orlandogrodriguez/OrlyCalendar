@@ -33,6 +33,11 @@ class CalendarCell: UICollectionViewCell {
         } else {
             self.layer.backgroundColor = UIColor.clear.cgColor
         }
+        if day.isCurrent && day.isInCurrentMonth {
+            oDayLabel.textColor = UIColor.red
+        } else {
+            oDayLabel.textColor = UIColor.black
+        }
         self.oDayLabel.layer.opacity = day.isInCurrentMonth ? 1.0 : 0.25
     }
     
