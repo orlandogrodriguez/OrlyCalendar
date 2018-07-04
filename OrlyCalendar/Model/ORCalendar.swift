@@ -104,14 +104,22 @@ class ORCalendar: NSObject {
         
         for i in 1970 ..< year {
             if isLeapYear(year: i) {
-                timeIntervalInt += 60 * 60 * 24 * 366 + 1
+                timeIntervalInt += 60 * 60 * 24 * 366
             } else {
-                timeIntervalInt += 60 * 60 * 24 * 365 + 1
+                timeIntervalInt += 60 * 60 * 24 * 365
             }
         }
         
         let timeInterval = TimeInterval(timeIntervalInt)
-        return Date(timeIntervalSince1970: timeInterval)
+        let nyd: Date = {
+            var date = Date(timeIntervalSince1970: timeInterval)
+            if Calendar.current.component(.year, from: date) != year {
+                date = Date(timeInterval: 60 * 60 * 24, since: date)
+                date = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: date)!
+            }
+            return date
+        }()
+        return nyd
     }
     
     private func isLeapYear(year: Int) -> Bool {
