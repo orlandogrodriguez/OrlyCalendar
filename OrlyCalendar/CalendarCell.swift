@@ -24,7 +24,7 @@ class CalendarCell: UICollectionViewCell {
     private func updateViewFromModel() {
         guard let day = self.day else { return }
         let date = day.date
-        self.oDayLabel.text = String(Calendar.current.component(.day, from: Date(timeInterval: 60 * 60 * 24, since: date)))
+        self.oDayLabel.text = String(Calendar.current.component(.day, from: Date(timeInterval: 0, since: date)))
         for det in day.detail {
             self.oDetailLabel.text?.append(contentsOf: det)
         }
