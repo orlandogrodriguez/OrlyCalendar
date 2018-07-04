@@ -30,7 +30,9 @@ class ORCalendar: NSObject {
             var dayToAppend = daysArray[i]
             // Check if the day we're going to append is part
             // of the currently viewed month
-            if Calendar.current.component(.month, from: Date(timeInterval: 60 * 60 * 24, since: dayToAppend.date)) != (monthInView + 1) {
+            
+            //Changes made: time interval back to zero.
+            if Calendar.current.component(.month, from: Date(timeInterval: 0, since: dayToAppend.date)) != (monthInView + 1) {
                 dayToAppend.isInCurrentMonth = false
             } else {
                 dayToAppend.isInCurrentMonth = true
@@ -75,24 +77,25 @@ class ORCalendar: NSObject {
         
         // Create a pointer at New Years Day of the year
         var datePointer = createNewYearsDayFor(year: year)
-        let offset = Calendar.current.component(.weekday, from: datePointer)
+        let offset = Calendar.current.component(.weekday, from: datePointer) - 1
         datePointer = Date(timeInterval: TimeInterval(-1 * 60 * 60 * 24 * offset), since: datePointer)
-        assert(Calendar.current.component(.weekday, from: datePointer) == 7, "Calendar's not starting on a sunday. Fix the bug.")
+        assert(Calendar.current.component(.weekday, from: datePointer) == 1, "Calendar's not starting on a sunday. Fix the bug.")
         
         daysArray = []
         monthToStartingWeek = [:]
         var currentMonth = 0
         var currentWeek = 0
-        for i in 1 ..< 378 {
+        for i in 0 ..< 378 {
             var newDay = Day(date: datePointer)
             if dateIsToday(date: datePointer) { newDay.isCurrent = true }
             daysArray.append(newDay)
             currentWeek = i / 7
-            if Calendar.current.component(.day, from: Date(timeInterval: 60 * 60 * 24, since: datePointer)) == 1 && monthToStartingWeek.count < 12 {
+            // Changes made below: time interval back to zero
+            if Calendar.current.component(.day, from: Date(timeInterval: 0, since: datePointer)) == 1 && monthToStartingWeek.count < 12 {
                 monthToStartingWeek[currentMonth] = currentWeek
-                if Calendar.current.component(.weekday, from: Date(timeInterval: 60 * 60 * 24, since: datePointer)) == 7 {
-                    monthToStartingWeek[currentMonth] = currentWeek - 1
-                }
+//                if Calendar.current.component(.weekday, from: Date(timeInterval: 60 * 60 * 24, since: datePointer)) == 1 {
+//                    monthToStartingWeek[currentMonth] = currentWeek - 1
+//                }
                 currentMonth += 1
             }
             datePointer = Date(timeInterval: 60 * 60 * 24, since: datePointer)
@@ -115,8 +118,8 @@ class ORCalendar: NSObject {
             var date = Date(timeIntervalSince1970: timeInterval)
             if Calendar.current.component(.year, from: date) != year {
                 date = Date(timeInterval: 60 * 60 * 24, since: date)
-                date = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: date)!
             }
+            date = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: date)!
             return date
         }()
         return nyd

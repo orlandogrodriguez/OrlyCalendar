@@ -27,7 +27,8 @@ struct Day {
         let nowMonth = Calendar.current.component(.month, from: nowDate)
         let nowYear = Calendar.current.component(.year, from: nowDate)
         
-        self.value = String(Calendar.current.component(.day, from: Date(timeInterval: 60 * 60 * 24, since: date)))
+        // Change made below: time interval back to 0
+        self.value = String(Calendar.current.component(.day, from: Date(timeInterval: 0, since: date)))
         self.isCurrent = dateDay == nowDay
             && dateMonth == nowMonth
             && dateYear == nowYear
