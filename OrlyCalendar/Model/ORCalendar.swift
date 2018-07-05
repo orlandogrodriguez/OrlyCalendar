@@ -10,8 +10,9 @@ import Foundation
 
 class ORCalendar: NSObject {
     // MARK: - Properties
-    private var currentYear: Int!
-    private(set) var monthInView: Int!
+    private var currentYear: Int = { return Calendar.current.component(.year, from: Date()) }()
+    private(set) var monthInView: Int = { return Calendar.current.component(.month, from: Date()) - 1 }()
+    
     private var daysArray: [Day]!
     private var monthToStartingWeek: [Int:Int]!
     
@@ -30,9 +31,7 @@ class ORCalendar: NSObject {
             var dayToAppend = daysArray[i]
             // Check if the day we're going to append is part
             // of the currently viewed month
-            
-            //Changes made: time interval back to zero.
-            if Calendar.current.component(.month, from: Date(timeInterval: 0, since: dayToAppend.date)) != (monthInView + 1) {
+            if Calendar.current.component(.month, from: dayToAppend.date) != (monthInView + 1) {
                 dayToAppend.isInCurrentMonth = false
             } else {
                 dayToAppend.isInCurrentMonth = true
@@ -60,21 +59,35 @@ class ORCalendar: NSObject {
         }
     }
     
+    func getYearInViewAsString() -> String {
+        return String(currentYear)
+    }
+    
     // Go to previous month and wrap around to december if in january
     func goToPreviousMonth() {
-        monthInView = monthInView == 0 ? 11 : monthInView - 1
+        if monthInView == 0 {
+            currentYear -= 1
+            monthInView = 11
+            setUpCalendarProperties(forYear: currentYear)
+        } else {
+            monthInView -= 1
+        }
     }
     
     // Go to next month and wrap around to january if in december.
     func goToNextMonth() {
-        monthInView = monthInView == 11 ? 0 : monthInView + 1
+        if monthInView == 11 {
+            currentYear += 1
+            monthInView = 0
+            setUpCalendarProperties(forYear: currentYear)
+        } else {
+            monthInView += 1
+        }
     }
     
     // Mark: - Private Methods
+    
     private func setUpCalendarProperties(forYear year: Int) {
-        self.currentYear = year
-        self.monthInView = 0 // TODO: Make user's current month
-        
         // Create a pointer at New Years Day of the year
         var datePointer = createNewYearsDayFor(year: year)
         let offset = Calendar.current.component(.weekday, from: datePointer) - 1
@@ -90,12 +103,8 @@ class ORCalendar: NSObject {
             if dateIsToday(date: datePointer) { newDay.isCurrent = true }
             daysArray.append(newDay)
             currentWeek = i / 7
-            // Changes made below: time interval back to zero
             if Calendar.current.component(.day, from: Date(timeInterval: 0, since: datePointer)) == 1 && monthToStartingWeek.count < 12 {
                 monthToStartingWeek[currentMonth] = currentWeek
-//                if Calendar.current.component(.weekday, from: Date(timeInterval: 60 * 60 * 24, since: datePointer)) == 1 {
-//                    monthToStartingWeek[currentMonth] = currentWeek - 1
-//                }
                 currentMonth += 1
             }
             datePointer = Date(timeInterval: 60 * 60 * 24, since: datePointer)

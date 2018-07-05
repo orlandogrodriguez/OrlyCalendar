@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     let calendar = ORCalendar(year: 2018)
 
     @IBOutlet weak var oCalendarCollection: UICollectionView!
+    @IBOutlet weak var oYearLabel: UILabel!
     @IBOutlet weak var oMonthLabel: UILabel!
     @IBOutlet weak var oWeekdayStackView: UIStackView!
     
@@ -24,6 +25,7 @@ class ViewController: UIViewController {
         oCalendarCollection.delegate = self
         
         addGestureRecognizers()
+        updateViewFromModel(swipeDirection: .none)
     }
     
     override func viewDidLayoutSubviews() {
@@ -43,27 +45,33 @@ class ViewController: UIViewController {
     @objc func swipeLeft() {
         self.calendar.goToNextMonth()
         print("Swiped left.")
-        updateViewFromModel()
+        updateViewFromModel(swipeDirection: .left)
     }
     
     @objc func swipeRight() {
         self.calendar.goToPreviousMonth()
         print("Swiped right")
-        updateViewFromModel()
+        updateViewFromModel(swipeDirection: .right)
     }
     
-    func updateViewFromModel() {
-        let swipeL = view.gestureRecognizers![view.gestureRecognizers!.count - 2]
-        let swipeR = view.gestureRecognizers![view.gestureRecognizers!.count - 1]
+    private func updateViewFromModel(swipeDirection: SwipeDirection) {
+        let animationOffset: CGFloat
+        switch swipeDirection {
+        case .left: animationOffset = -8
+        case .right: animationOffset = 8
+        case .none: animationOffset = 0
+        }
+        
         let cframe = oCalendarCollection.frame
         UIView.animate(withDuration: 0.1, animations: {
-            self.oCalendarCollection.frame = CGRect(x: cframe.minX + 8, y: cframe.minY, width: cframe.width, height: cframe.height)
+            self.oCalendarCollection.frame = CGRect(x: cframe.minX + animationOffset, y: cframe.minY, width: cframe.width, height: cframe.height)
             self.oCalendarCollection.layer.opacity = 0.0
             self.oMonthLabel.layer.opacity = 0.0
         }) { (finished) in
-            self.oCalendarCollection.frame = CGRect(x: cframe.minX - 8, y: cframe.minY, width: cframe.width, height: cframe.height)
+            self.oCalendarCollection.frame = CGRect(x: cframe.minX - animationOffset, y: cframe.minY, width: cframe.width, height: cframe.height)
             self.oCalendarCollection.reloadData()
             self.oMonthLabel.text = self.calendar.getMonthInViewAsString()
+            self.oYearLabel.text = self.calendar.getYearInViewAsString()
             UIView.animate(withDuration: 0.1, animations: {
                 self.oCalendarCollection.frame = cframe
                 self.oCalendarCollection.layer.opacity = 1.0
@@ -81,6 +89,12 @@ class ViewController: UIViewController {
         stackViewBottomBorder.borderWidth = stackViewBottomBorderWidth
         self.view.layer.addSublayer(stackViewBottomBorder)
         self.view.layer.masksToBounds = true
+    }
+    
+    private enum SwipeDirection {
+        case left
+        case right
+        case none
     }
     
     
