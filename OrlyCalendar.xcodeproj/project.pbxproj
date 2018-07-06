@@ -14,7 +14,6 @@
 		81D64FE920CAFD64005D3857 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D64FE820CAFD64005D3857 /* ViewController.swift */; };
 		81D64FEC20CAFD64005D3857 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D64FEA20CAFD64005D3857 /* Main.storyboard */; };
 		81D64FEF20CAFD64005D3857 /* CollectionPractice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81D64FED20CAFD64005D3857 /* CollectionPractice.xcdatamodeld */; };
-		81D64FF120CAFD66005D3857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81D64FF020CAFD66005D3857 /* Assets.xcassets */; };
 		81D64FF420CAFD66005D3857 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D64FF220CAFD66005D3857 /* LaunchScreen.storyboard */; };
 		E67E9B4F20E6D9EA00571336 /* ORCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67E9B4E20E6D9EA00571336 /* ORCalendar.swift */; };
 		E67E9B5220E6E07A00571336 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67E9B5120E6E07A00571336 /* Day.swift */; };
@@ -29,7 +28,6 @@
 		81D64FE820CAFD64005D3857 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		81D64FEB20CAFD64005D3857 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81D64FEE20CAFD64005D3857 /* CollectionPractice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CollectionPractice.xcdatamodel; sourceTree = "<group>"; };
-		81D64FF020CAFD66005D3857 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81D64FF320CAFD66005D3857 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81D64FF520CAFD66005D3857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E67E9B4E20E6D9EA00571336 /* ORCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORCalendar.swift; sourceTree = "<group>"; };
@@ -66,7 +64,6 @@
 		81D64FE520CAFD64005D3857 /* OrlyCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				81D64FF020CAFD66005D3857 /* Assets.xcassets */,
 				81D64FE620CAFD64005D3857 /* AppDelegate.swift */,
 				E67E9B5020E6E06600571336 /* Model */,
 				81D64FE820CAFD64005D3857 /* ViewController.swift */,
@@ -149,7 +146,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				81D64FF420CAFD66005D3857 /* LaunchScreen.storyboard in Resources */,
-				81D64FF120CAFD66005D3857 /* Assets.xcassets in Resources */,
 				81D64FEC20CAFD64005D3857 /* Main.storyboard in Resources */,
 				8122A3C020CEE677003D5BD9 /* CalendarCell.xib in Resources */,
 			);
