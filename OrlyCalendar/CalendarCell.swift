@@ -24,7 +24,9 @@ class CalendarCell: UICollectionViewCell {
     private func updateViewFromModel() {
         guard let day = self.day else { return }
         let date = day.date
-        self.oDayLabel.text = String(Calendar.current.component(.day, from: Date(timeInterval: 0, since: date)))
+        self.oDayLabel.text = String(Calendar.current.component(.day, from:
+            Date(timeInterval: 0, since: date)))
+        self.oDetailLabel.text = "🇧🇪"
         for det in day.detail {
             self.oDetailLabel.text?.append(contentsOf: det)
         }
@@ -39,6 +41,7 @@ class CalendarCell: UICollectionViewCell {
             oDayLabel.textColor = UIColor.black
         }
         self.oDayLabel.layer.opacity = day.isInCurrentMonth ? 1.0 : 0.25
+        self.oDetailLabel.layer.opacity = day.isInCurrentMonth ? 1.0 : 0.25
     }
     
 }
