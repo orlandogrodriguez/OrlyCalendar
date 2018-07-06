@@ -10,7 +10,7 @@ import Foundation
 
 class ORCalendar: NSObject {
     // MARK: - Properties
-    private var currentYear: Int = { return Calendar.current.component(.year, from: Date()) }()
+    private(set) var currentYear: Int = { return Calendar.current.component(.year, from: Date()) }()
     private(set) var monthInView: Int = { return Calendar.current.component(.month, from: Date()) - 1 }()
     
     private var daysArray: [Day]!
@@ -83,6 +83,16 @@ class ORCalendar: NSObject {
         } else {
             monthInView += 1
         }
+    }
+    
+    func goToNextYear() {
+        currentYear += 1
+        setUpCalendarProperties(forYear: currentYear)
+    }
+    
+    func goToPreviousYear() {
+        currentYear -= 1
+        setUpCalendarProperties(forYear: currentYear)
     }
     
     // Mark: - Private Methods

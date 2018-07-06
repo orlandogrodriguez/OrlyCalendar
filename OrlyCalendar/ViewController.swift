@@ -17,6 +17,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var oMonthLabel: UILabel!
     @IBOutlet weak var oWeekdayStackView: UIStackView!
     
+    @IBAction func handleNextYearButtonPressed(_ sender: UIButton) {
+        calendar.goToNextYear()
+        updateViewFromModel(swipeDirection: .left)
+    }
+    @IBAction func handlePreviousYearButtonPressed(_ sender: UIButton) {
+        calendar.goToPreviousYear()
+        updateViewFromModel(swipeDirection: .right)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +40,7 @@ class ViewController: UIViewController {
         initializeUI()
     }
     
+    // Creates gesture recognizers and cleans up viewDidLoad
     private func addGestureRecognizers() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeLeft))
         swipeLeft.direction = .left
@@ -42,41 +51,48 @@ class ViewController: UIViewController {
         view.addGestureRecognizer(swipeRight)
     }
     
+    // Executes when swiping left
     @objc func swipeLeft() {
         self.calendar.goToNextMonth()
-        print("Swiped left.")
         updateViewFromModel(swipeDirection: .left)
     }
     
+    // Executes when swiping right
     @objc func swipeRight() {
         self.calendar.goToPreviousMonth()
-        print("Swiped right")
         updateViewFromModel(swipeDirection: .right)
     }
     
+    // Updates data for all UI elements in view.
+    // Handles the animation when month in view changes.
     private func updateViewFromModel(swipeDirection: SwipeDirection) {
-        let animationOffset: CGFloat
-        switch swipeDirection {
-        case .left: animationOffset = -8
+        let animationOffset: CGFloat // How much the calendar moves in animation
+        switch swipeDirection { // Set offset depending on the action that caused
+        case .left: animationOffset = -8  // the view update.
         case .right: animationOffset = 8
         case .none: animationOffset = 0
         }
         
-        let cframe = oCalendarCollection.frame
+        let cframe = oCalendarCollection.frame // Keep reference to calendar's original frame
+        // Start the animation
         UIView.animate(withDuration: 0.1, animations: {
             self.oCalendarCollection.frame = CGRect(x: cframe.minX + animationOffset, y: cframe.minY, width: cframe.width, height: cframe.height)
             self.oCalendarCollection.layer.opacity = 0.0
             self.oMonthLabel.layer.opacity = 0.0
-        }) { (finished) in
-            self.oCalendarCollection.frame = CGRect(x: cframe.minX - animationOffset, y: cframe.minY, width: cframe.width, height: cframe.height)
-            self.oCalendarCollection.reloadData()
-            self.oMonthLabel.text = self.calendar.getMonthInViewAsString()
-            self.oYearLabel.text = self.calendar.getYearInViewAsString()
-            UIView.animate(withDuration: 0.1, animations: {
-                self.oCalendarCollection.frame = cframe
-                self.oCalendarCollection.layer.opacity = 1.0
-                self.oMonthLabel.layer.opacity = 1.0
-            })
+        }) { (finished) in  // when the animation finishes...
+            // move the frame to opposite direction to fade the new month in.
+            DispatchQueue.main.async {
+                self.oCalendarCollection.frame = CGRect(x: cframe.minX - animationOffset, y: cframe.minY, width: cframe.width, height: cframe.height) //
+                self.oCalendarCollection.reloadData() // reload the collectionview's data
+                // update UI elements
+                self.oMonthLabel.text = self.calendar.getMonthInViewAsString()
+                self.oYearLabel.text = self.calendar.getYearInViewAsString()
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.oCalendarCollection.frame = cframe
+                    self.oCalendarCollection.layer.opacity = 1.0
+                    self.oMonthLabel.layer.opacity = 1.0
+                })
+            }
         }
     }
     
@@ -96,8 +112,6 @@ class ViewController: UIViewController {
         case right
         case none
     }
-    
-    
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -111,7 +125,4 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.setDay(value: monthArray[indexPath.item])
         return cell
     }
-    
 }
-
-

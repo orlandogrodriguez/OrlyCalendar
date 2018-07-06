@@ -26,10 +26,7 @@ class CalendarCell: UICollectionViewCell {
         let date = day.date
         self.oDayLabel.text = String(Calendar.current.component(.day, from:
             Date(timeInterval: 0, since: date)))
-        self.oDetailLabel.text = "🇧🇪"
-        for det in day.detail {
-            self.oDetailLabel.text?.append(contentsOf: det)
-        }
+        self.oDetailLabel.text = String(day.detail)
         if day.isSelected {
             self.layer.backgroundColor = UIColor.cyan.cgColor
         } else {

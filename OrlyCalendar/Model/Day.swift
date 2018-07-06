@@ -10,7 +10,7 @@ import Foundation
 
 struct Day {
     var value: String               // Displays the number value of the day, (i.e. from 1 to 31 or '-')
-    var detail: [String]            // Displays the countries visited during the day
+    var detail: String              // Displays the countries visited during the day
     var isSelected: Bool            // becomes highlighted when selected
     var isCurrent: Bool             // becomes true if it is currently that day
     var isInCurrentMonth: Bool      // States whether the current day is part of the current month.
@@ -34,7 +34,7 @@ struct Day {
             && dateYear == nowYear
         
         self.isSelected = false
-        self.detail = []
+        self.detail = "🇧🇪"
         self.isInCurrentMonth = false
     }
 }

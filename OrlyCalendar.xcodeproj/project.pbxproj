@@ -70,13 +70,13 @@
 				81D64FE620CAFD64005D3857 /* AppDelegate.swift */,
 				E67E9B5020E6E06600571336 /* Model */,
 				81D64FE820CAFD64005D3857 /* ViewController.swift */,
-				81D64FEA20CAFD64005D3857 /* Main.storyboard */,
-				81D64FF220CAFD66005D3857 /* LaunchScreen.storyboard */,
-				81D64FF520CAFD66005D3857 /* Info.plist */,
-				81D64FED20CAFD64005D3857 /* CollectionPractice.xcdatamodeld */,
-				8122A3BF20CEE677003D5BD9 /* CalendarCell.xib */,
 				8122A3C120CEE72F003D5BD9 /* CalendarCell.swift */,
 				0CE2277220DCB7B900B8FF44 /* OrlyCalendarCollectionViewFlowLayout.swift */,
+				81D64FEA20CAFD64005D3857 /* Main.storyboard */,
+				81D64FF220CAFD66005D3857 /* LaunchScreen.storyboard */,
+				8122A3BF20CEE677003D5BD9 /* CalendarCell.xib */,
+				81D64FF520CAFD66005D3857 /* Info.plist */,
+				81D64FED20CAFD64005D3857 /* CollectionPractice.xcdatamodeld */,
 			);
 			path = OrlyCalendar;
 			sourceTree = "<group>";

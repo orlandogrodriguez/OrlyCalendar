@@ -23,13 +23,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ehN-Bb-R0D">
-                                <rect key="frame" x="15.5" y="4" width="14.5" height="14"/>
+                                <rect key="frame" x="4" y="4" width="36" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="🇧🇪" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CSi-2L-6Mz">
-                                <rect key="frame" x="10.5" y="20.5" width="23" height="19.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="🇧🇪" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CSi-2L-6Mz">
+                                <rect key="frame" x="4" y="20.5" width="36" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -39,9 +39,13 @@
                             <constraint firstItem="ehN-Bb-R0D" firstAttribute="top" secondItem="pPd-0Y-A1x" secondAttribute="top" constant="4" id="1kV-zA-RVc"/>
                             <constraint firstItem="ehN-Bb-R0D" firstAttribute="centerX" secondItem="pPd-0Y-A1x" secondAttribute="centerX" id="3D9-JQ-mnu"/>
                             <constraint firstItem="CSi-2L-6Mz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ehN-Bb-R0D" secondAttribute="bottom" id="9ni-am-kIK"/>
+                            <constraint firstAttribute="trailing" secondItem="CSi-2L-6Mz" secondAttribute="trailing" constant="4" id="B1F-py-SbB"/>
+                            <constraint firstItem="ehN-Bb-R0D" firstAttribute="leading" secondItem="pPd-0Y-A1x" secondAttribute="leading" constant="4" id="KYo-dW-tjU"/>
                             <constraint firstItem="CSi-2L-6Mz" firstAttribute="centerX" secondItem="pPd-0Y-A1x" secondAttribute="centerX" id="P70-cY-i8u"/>
+                            <constraint firstAttribute="trailing" secondItem="ehN-Bb-R0D" secondAttribute="trailing" constant="4" id="X2W-Ur-FtH"/>
                             <constraint firstItem="CSi-2L-6Mz" firstAttribute="centerX" secondItem="pPd-0Y-A1x" secondAttribute="centerX" id="flQ-ec-KID"/>
                             <constraint firstAttribute="bottom" secondItem="CSi-2L-6Mz" secondAttribute="bottom" constant="4" id="oEZ-r7-C2u"/>
+                            <constraint firstItem="CSi-2L-6Mz" firstAttribute="leading" secondItem="pPd-0Y-A1x" secondAttribute="leading" constant="4" id="rc1-S5-3K5"/>
                             <constraint firstItem="ehN-Bb-R0D" firstAttribute="centerX" secondItem="pPd-0Y-A1x" secondAttribute="centerX" id="thH-MH-2z4"/>
                         </constraints>
                     </view>
